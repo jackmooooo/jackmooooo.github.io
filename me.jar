@@ -1,6 +1,0 @@
-var me = "Jack Rhymes";
-var age = 14;
-var username = prompt("what is your username");
-console.log("name: " + me);
-console.log("age: " + age);
-console.log("hello " + username);
