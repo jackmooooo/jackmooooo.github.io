@@ -7,15 +7,14 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-	<!-- BEGIN CSS -->
 	<style>
 	    [class="newbox"]{
+	    	text-align: center;
 	        background-color: teal;
 	        width: 4000px;
 	        height: 6000px;
 	        font-size: 500%;
 	        color: red;
-	        text-align: left;
 	    }
 		[class="box"] {
 			display: block;
@@ -37,9 +36,9 @@
 	<div class="box">0</div>
 	
 	<script>
-		(function(){
+	(function(){
 			'use strict';
-			/* global &*/
+			/* global $*/
 			var box;
 			var newbox;
 			var dead;
@@ -60,10 +59,11 @@
 			dead = "no misclicks";
 			
 			box = $('.box');
-			newbox = $('.newbox')
+			newbox = $('.newbox');
 			boardWidth = $('.board').width();
 			
 			box.css('left', position);
+			newbox.css('width',boardWidth);
 			
 			box.text(points);
 			
@@ -116,7 +116,7 @@
                     } else if (yorn === "N") {
                         speed = 0;
                         one = 0;
-                        box.text("reload the page if you meant yes")
+                        box.text("reload the page if you meant yes");
                     }
 			    } else {
 			    dead = dead + 1;
