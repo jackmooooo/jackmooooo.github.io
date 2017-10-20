@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Projects</title>
+        <script src="jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <style>
+            [class="notjs"] {
+                height: 2000px;
+                background-color: #a1ad01;
+                font-size: 150%;
+                color: #014bad;
+            } a:hover {
+                color: #916212;
+                background-color: #a1ad01;
+            } a:link {
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body class="board">
+        <div class="notjs" align="center">
+            <p>My Projects</p>
+            <li><a href="/portfolio/NoMisclicks/NoMisclicks.html">No Misclicks</a></li>
+            <li><a href="">Platformer</a></li>
+        </div>
+        <div class="js">
+            <script>
+            (function() {
+                'use strict'
+                /* global $*/
+                var boardwidth;
+                var notjs;
+                
+                notjs = $(notjs)
+                boardwidth = $('.borard').width();
+                
+                notjs.css('width',boardwidth);
+            }
+            </script>
+        </div>
+    </body>
+</html>
