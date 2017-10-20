@@ -2,17 +2,20 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Bouncing Box</title>
+	<title>No Misclicks</title>
 	<script src="jquery.min.js"></script>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 	<style>
-	    [class="newbox"]{
+		[class="board"] {
+			color: red;
+		}
+	    [class="newbox"] {
 	    	text-align: center;
-	        background-color: teal;
+	        background-color: #321193;
 	        width: 4000px;
-	        height: 6000px;
+	        height: 2000px;
 	        font-size: 500%;
 	        color: red;
 	    }
@@ -51,22 +54,24 @@
 			var points;
 			var speed;
 			var yorn;
+			var yes;
+			var no;
 			
 			one = 0.05;
 			position = 0;
 			points = 0;
 			speed = 2;
 			dead = "no misclicks";
+			yes = ["y","Y","yes","Yes","yEs","YEs","yeS","YeS","yES","YES","y3s","Y3s","y3S","Y3S"];
+			no = ["n","N","no","No","nO","NO","n0","N0"];
 			
 			box = $('.box');
 			newbox = $('.newbox');
 			boardWidth = $('.board').width();
 			
 			box.css('left', position);
-			newbox.css('width',boardWidth);
-			
+			newbox.css('width',boardWidth + 20);
 			box.text(points);
-			
 			newbox.text(dead);
 			
 			setInterval(update,20);
@@ -75,10 +80,10 @@
 			    position = position + speed;
 			    if (position > boardWidth - 50) {
 			        speed = speed * -1;
-			        one = -1;
+			        one = -0.05;
 			    } else if (position < 0) {
 			        speed = speed * -1;
-			        one = 1;
+			        one = 0.05;
 			    }
 			    box.css('left',position);
 			};
@@ -99,7 +104,7 @@
 			    } else if (dead > 7) {
 			        confirm("CONGRATULATIONS YOU GOT A SCORE OF " + points);
 			        yorn = prompt("YOU HAVE DIED. do you want to restart? (Y or N).");
-			        if (yorn === "Y") {
+			        if (yes.includes(yorn)) {
 			            dead = "no misclicks";
 			            newbox.text(dead);
 			            box.css('left',0);
@@ -113,10 +118,15 @@
 		                        aControls[i].clearValues();
 	                        }
 			            }
-                    } else if (yorn === "N") {
+                    } else if (no.includes(yorn)) {
                         speed = 0;
                         one = 0;
                         box.text("reload the page if you meant yes");
+                    } else {
+                    	speed = 0;
+                    	one = 0;
+                    	box.text("reload the page");
+                    	newbox.text("reload the page");
                     }
 			    } else {
 			    dead = dead + 1;
