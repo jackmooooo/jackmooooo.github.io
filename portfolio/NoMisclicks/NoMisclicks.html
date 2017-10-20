@@ -46,6 +46,7 @@
 			var newbox;
 			var dead;
 			var boardWidth;
+			var boardheight;
 			var update;
 			var handleBoxClick;
 			var handeNewBoxClick;
@@ -68,9 +69,11 @@
 			box = $('.box');
 			newbox = $('.newbox');
 			boardWidth = $('.board').width();
+			boardheight = $('.board').height();
 			
 			box.css('left', position);
-			newbox.css('width',boardWidth + 20);
+			newbox.css('width',boardWidth);
+			newbox.css('height',boardheight);
 			box.text(points);
 			newbox.text(dead);
 			
