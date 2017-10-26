@@ -8,12 +8,12 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 	<style>
-		[class="board"] {
+		body {
 			color: red;
 		}
 	    [class="newbox"] {
 	    	text-align: center;
-	        background-color: #321193;
+	        background-color: darkblue;
 	        width: 4000px;
 	        height: 2000px;
 	        font-size: 500%;
@@ -57,6 +57,7 @@
 			var yorn;
 			var yes;
 			var no;
+			var checkpoints;
 			
 			one = 0.05;
 			position = 0;
@@ -65,6 +66,7 @@
 			dead = "no misclicks";
 			yes = ["y","Y","yes","Yes","yEs","YEs","yeS","YeS","yES","YES","y3s","Y3s","y3S","Y3S"];
 			no = ["n","N","no","No","nO","NO","n0","N0"];
+			checkpoints = [25,50,75,100,150,200];
 			
 			box = $('.box');
 			newbox = $('.newbox');
@@ -96,6 +98,18 @@
 			    points = points + 1;
 			    box.text(points);
 			    speed = speed + one;
+			    if (points%2 === 0) {
+			    	newbox.css('background-color', "red");
+			    	newbox.css('color', "darkblue");
+			    	box.css('background-color', "darkblue");
+			    } else {
+			    	newbox.css('background-color', "darkblue");
+			    	newbox.css('color', "red");
+			    	box.css('background-color', "red");
+			    }
+			    if (checkpoints.includes(points)) {
+			    	confirm("Nice you got to a score of" + points);
+			    }
 			};
 			box.on('click',handleBoxClick);
 			
