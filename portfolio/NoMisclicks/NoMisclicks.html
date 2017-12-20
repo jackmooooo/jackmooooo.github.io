@@ -49,31 +49,42 @@
 	(function(){
 			'use strict';
 			/* global $*/
-			var box;
-			var newbox;
-			var dead;
-			var boardWidth;
-			var boardheight;
-			var update;
-			var handleBoxClick;
-			var handeNewBoxClick;
-			var one;
-			var position;
-			var points;
-			var speed;
-			var yorn;
-			var yes;
-			var no;
-			var checkpoints;
-			var scoreboard;
+			var
+			box,
+			newbox,
+			dead,
+			boardWidth,
+			boardheight,
+			update,
+			handleBoxClick,
+			handeNewBoxClick,
+			one,
+			xposition,
+			yposition,
+			points,
+			xspeed,
+			yspeed,
+			yorn,
+			yes,
+			no,
+			checkpoints,
+			scoreboard,
+			yacceleration;
+			
+			console.log("hello my fellow hacker");
+			console.log("i have been expecting you");
+			console.log("we do not take ver kindly to other hackers");
 			
 			one = 0.1;
-			position = 0;
+			xposition = 0;
+			yposition = 500;
 			points = 0;
-			speed = 2;
+			xspeed = 2;
+			yspeed = 0;
+			yacceleration = 0;
 			dead = "no misclicks";
-			yes = ["y","Y","yes","Yes","yEs","YEs","yeS","YeS","yES","YES","y3s","Y3s","y3S","Y3S"];
-			no = ["n","N","no","No","nO","NO","n0","N0"];
+			yes = ["y","Y","yes","Yes","yEs","YEs","yeS","YeS","yES","YES","y3s","Y3s","y3S","Y3S","ye5","Ye5","yE5","YE5","y35","Y35","y35","y.","Y.","yes.","Yes.","yEs.","YEs.","yeS.","YeS.","yES.","YES.","y3s.","Y3s.","y3S.","Y3S.","ye5.","Ye5.","yE5.","YE5.","y35.","Y35.","y35."];
+			no = ["n","N","no","No","nO","NO","n0","N0","n.","N.","no.","No.","nO.","NO.","n0.","N0."];
 			checkpoints = [25,50,75,100,150,200];
 			
 			box = $('.box');
@@ -82,7 +93,7 @@
 			boardheight = $('.board').height();
 			scoreboard = $('.scoreboard');
 			
-			box.css('left', position);
+			box.css('left', xposition);
 			newbox.css('width',boardWidth);
 			newbox.css('height',boardheight);
 			box.text(points);
@@ -92,22 +103,34 @@
 			setInterval(update,20);
 		    
 			update = function() {
-			    position = position + speed;
-			    if (position > boardWidth - 50) {
-			        speed = speed * -1;
+			    xposition = xposition + xspeed;
+			    yspeed = yspeed - yacceleration;
+			    yposition = yposition - yspeed;
+			    if (yposition >= 500) {
+			    	yspeed = 0;
+			    	yacceleration = 0;
+			    	yposition = 500;
+			    }
+			    if (xposition > boardWidth - 50) {
+			        xspeed = xspeed * -1;
 			        one = -0.1;
-			    } else if (position < 0) {
-			        speed = speed * -1;
+			    } else if (xposition < 0) {
+			        xspeed = xspeed * -1;
 			        one = 0.1;
 			    }
-			    box.css('left',position);
+			    box.css('left', xposition);
+			    box.css('top', yposition);
 			};
 			box.on('click', handleBoxClick);
 			
 			handleBoxClick = function() {
-			    points = points + 1;
+				points = points + 1;
 			    box.text(points);
-			    speed = speed + one;
+			    yspeed = 5;
+			    xspeed = xspeed + one;
+			    if (yposition === 500) {
+			    	yacceleration = .1;
+			    }
 			    if (points%2 === 0) {
 			    	newbox.css('background-color', "red");
 			    	newbox.css('color', "darkblue");
@@ -121,7 +144,7 @@
 			    	confirm("Nice you got to a score of " + points);
 			    }
 			    if (points === 100) {
-			    	box.css('width', 120)
+			    	box.css('width', 120);
 			    }
 			};
 			box.on('click',handleBoxClick);
@@ -131,33 +154,31 @@
 			handeNewBoxClick = function() {
 			    if (dead === "no misclicks") {
 			        dead = 1;
+			        box.text(dead);
 			    } else if (dead > 7) {
 			        confirm("CONGRATULATIONS YOU GOT A SCORE OF " + points);
-			        yorn = prompt("YOU HAVE DIED. do you want to restart? (Y or N).");
+			        yorn = prompt("YOU HAVE DIED. do you want to restart?");
 			        if (yes.includes(yorn)) {
 			            dead = "no misclicks";
 			            newbox.text(dead);
 			            box.css('left',0);
 			            box.text(0);
-			            speed = 2;
+			            xspeed = 2;
 			            points = 0;
-			            function clearAllValues() {
-	                        var oCR = cognos.Report.getReport("_THIS_");
-	                        var aControls = oCR.prompt.getControls();
-	                        for (var i = 0; i < aControls.length; i++) {
-		                        aControls[i].clearValues();
-	                        }
-			            }
                     } else if (no.includes(yorn)) {
-                        speed = 0;
+                        xspeed = 0;
                         one = 0;
                         box.text("reload the page if you meant yes");
                     } else {
-                    	speed = 0;
+                    	xspeed = 0;
                     	one = 0;
                     	box.text("reload the page");
                     	newbox.text("reload the page");
                     }
+			    } else if (dead > 10) {
+			    	for (var i = 0; i >= 100; i++) {
+			    		confirm('i expected more from you');
+			    	}
 			    } else {
 			    dead = dead + 1;
 			    newbox.text(dead);

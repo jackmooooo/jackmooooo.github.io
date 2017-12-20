@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Operation Spark || Motion Poem</title>
+        <title>Tharapy circles</title>
         <meta name="description" content="Operation Spark Motion Poem">
         <meta name="author" content="operationspark.org">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -89,20 +89,20 @@
                         
                         // TODO 6 : YOUR CODE STARTS HERE //////////////////////
                         
-                        if ( circle.x > canvas.width ) {
+                        if ( circle.x > canvas.width + 20) {
                             // your code to place circle exactly off the stage at the left-side //
-                            circle.x = 0;
-                        } else if (circle.x < 0) {
+                            circle.x = -20;
+                        } else if (circle.x < -20) {
                             // your code to place circle exactly off the stage at the right-side //
-                            circle.x = canvas.width;
+                            circle.x = canvas.width + 20;
                         }
                         
-                        if (circle.y > canvas.height) {
+                        if (circle.y > canvas.height + 20) {
                             // code to place circle exactly off the stage at the bottom //
-                            circle.y = 0;
-                        } else if (circle.y < 0) {
+                            circle.y = -20;
+                        } else if (circle.y < -20) {
                             // your code to place circle exactly off the stage at the top //
-                            circle.y = canvas.height;
+                            circle.y = canvas.height + 20;
                         }
                         
                         // YOUR TODO 6 CODE ENDS HERE //////////////////////////

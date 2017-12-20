@@ -1,0 +1,92 @@
+<!DOCKTYPE html>
+<html>
+    <head>
+      <title>Hello!</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <style>
+        [class="board"] {
+          background-color: teal;
+        } [class="everything"] {
+          color: black;
+          background-color: orange;
+          border-radius: 12px;
+          font: fantasy;
+          height: 700px;
+          width: 1200px;
+        } [id="others"] {
+          color: grey;
+        } [id="others"]:hover {
+          color: black;
+        } [id="minecraft"] {
+          color: grey;
+        } [id="minecraft"]:hover {
+          color: grey;
+        }
+      </style>
+    </head>
+    <body class="board">
+      <script>
+      /* global $ */
+        $(document).ready(function(){
+          $("button").click(function(){
+            $("hu.some-games-that-i-play").toggle();
+          });
+        });
+        
+        var htmlstuff;
+        
+        htmlstuff = function() {
+          var boardwidth = $('.board').width();
+          var boardheight = $('.board').height();
+          var mystuff = $('.everything');
+          
+          mystuff.css('height', boardheight);
+          mystuff.css('width', boardwidth);
+        };
+        htmlstuff();
+      </script>
+        <div class="everything">
+          <div class="sidebar">
+            
+          </div>
+          <main>
+          <h1>Hi!</h1>
+          
+          <img src="me.jpg" width="300" left="200" top="300" height="300"></img>
+          
+          <h2> I'm Jack.</h2>
+        
+        
+        
+          <p>Some Things about me:</p>
+          
+          <p align="right">I also stream on <a href="https://www.twitch.tv/jackmooooo">twitch</a> sometimes</p>
+          
+          <p align="right"><i>Psst, follow me I do roblox.</i></p>
+          
+          <hu>
+            <li>I play three musical instuments.</li>
+              
+            <li>I am a gamer.</li>
+              
+            <li>click <a href="/portfolio/portfolio.html">here</a> for some games i made</li>
+          </hu>
+          </main>
+          <button>Games that i play</button>
+            <nav>
+              <hu class="some-games-that-i-play">
+                <li id="minecraft" style="color:#ffa500"><a style="color:#ffa500" href="https://minecraft.net/en-us/">Minecraft</a></li>
+                  
+                <li id="terraria" style="color:green"><a style="color:green" href="https://terraria.org/">Terraria</a></li>
+                  
+                <li id="roblox" style="color:red"><a href="https://www.roblox.com/">Roblox</a></li>
+                  
+                <li><a id="others" href="/other/other.html">Others</a></li>
+              </hu>
+            </nav>
+        </div>
+        
+        
+    </body>
+    
+</html>

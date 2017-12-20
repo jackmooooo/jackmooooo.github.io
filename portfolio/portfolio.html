@@ -10,10 +10,13 @@
                 background-color: #a1ad01;
                 font-size: 150%;
                 color: #014bad;
+                border-radius: 12px;
             } a:hover {
                 color: #916212;
                 background-color: #a1ad01;
             } a:link {
+                background-color: red;
+            } body {
                 background-color: red;
             }
         </style>
@@ -22,23 +25,20 @@
         <div class="notjs" align="center">
             <p>My Projects</p>
             <li><a href="/portfolio/NoMisclicks/NoMisclicks.html">No Misclicks</a></li>
-            <li><a href="/other/underconstruction.html">Platformer</a></li>
-            <li><a href="/other/underconstruction.html">Therapeutic Circles</a></li>
+            <li><a href="/projects/circularity/therapy.html">Therapeutic Circles</a></li>
         </div>
-        <div class="js">
-            <script>
-            (function() {
-                'use strict'
-                /* global $*/
-                var boardwidth;
-                var notjs;
-                
-                notjs = $(notjs)
-                boardwidth = $('.borard').width();
-                
-                notjs.css('width',boardwidth);
-            }
-            </script>
-        </div>
+        <script>
+        (function() {
+            'use strict'
+            /* global $*/
+            var boardwidth;
+            var notjs;
+            
+            notjs = $(notjs)
+            boardwidth = $('.borard').width();
+            
+            notjs.css('width',boardwidth);
+        }
+        </script>
     </body>
 </html>
